@@ -1,5 +1,15 @@
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import { Form } from "@/components/ui/form";
 import { Delete, EditIcon, Trash2 } from "lucide-react";
 import React from "react";
+import EditForm from "./EditForm";
 
 const todos = [
     {
@@ -55,7 +65,18 @@ export default function HomePageComponent() {
                             <p className="text-sm">{todo.description}</p>
                         </div>
                         <div className="hover:cursor-pointer flex flex-col p-5 items-center bg-blue-900 rounded-r-lg gap-5">
-                            <EditIcon className="w-6 h-6 text-green-500" />
+                            <Dialog>
+                                <DialogTrigger>
+                                    <EditIcon className="w-6 h-6 text-green-500" />
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <EditForm
+                                        title={todo.title}
+                                        description={todo.description}
+                                    />
+                                </DialogContent>
+                            </Dialog>
+
                             <Trash2 className="w-6 h-6 text-slate-300 p-0.5 rounded-md bg-red-600" />
                         </div>
                     </div>
